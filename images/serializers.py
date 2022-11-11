@@ -1,6 +1,7 @@
 from rest_framework import serializers
-from images.models import ImageUpload
-from django.contrib.auth.models import User
+from images.models import ImageUpload, User
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
 
 class ImageSerializer(serializers.ModelSerializer):
     creator = serializers.ReadOnlyField(source='creator.username')
@@ -12,4 +13,4 @@ class ImageSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'email']
+        fields = ['id', 'nomeCompleto', 'username', 'email', 'password']
